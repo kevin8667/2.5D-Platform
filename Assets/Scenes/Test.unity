@@ -135,6 +135,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1709740693}
     m_Modifications:
+    - target: {fileID: 5058925867747624984, guid: 08b322edcb6316145aef5b7fb6be9563, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 5058925867747624986, guid: 08b322edcb6316145aef5b7fb6be9563, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -307,6 +311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coinText: {fileID: 1475097507}
   _lifeText: {fileID: 1397990707}
+  _gameOverMenu: {fileID: 0}
 --- !u!1001 &156513444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -358,6 +363,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5070600031756694134, guid: 05e9c28c83cc06247bde0833f9dae746, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 6260733381996309277, guid: 05e9c28c83cc06247bde0833f9dae746, type: 3}
       propertyPath: m_Name
       value: Coin(1)
@@ -402,6 +411,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1709740693}
     m_Modifications:
+    - target: {fileID: 5058925867747624984, guid: 08b322edcb6316145aef5b7fb6be9563, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 5058925867747624986, guid: 08b322edcb6316145aef5b7fb6be9563, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -828,7 +841,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -893,6 +906,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1709740693}
     m_Modifications:
+    - target: {fileID: 5058925867747624984, guid: 08b322edcb6316145aef5b7fb6be9563, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 5058925867747624986, guid: 08b322edcb6316145aef5b7fb6be9563, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -955,6 +972,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1709740693}
     m_Modifications:
+    - target: {fileID: 5058925867747624984, guid: 08b322edcb6316145aef5b7fb6be9563, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 5058925867747624986, guid: 08b322edcb6316145aef5b7fb6be9563, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1068,7 +1089,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1128,6 +1149,7 @@ MonoBehaviour:
   _speed: 5
   _gravity: 0.3
   _jumpHeight: 20
+  _pushPower: 0
   _life: 3
   _UIManager: {fileID: 137878833}
 --- !u!1 &1397990705
@@ -1192,7 +1214,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -1316,6 +1339,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5070600031756694134, guid: 05e9c28c83cc06247bde0833f9dae746, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 6260733381996309277, guid: 05e9c28c83cc06247bde0833f9dae746, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -1384,7 +1411,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -1700,6 +1728,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPlatform
       objectReference: {fileID: 0}
+    - target: {fileID: 8437757635856598888, guid: c463e0ae2f1d57a499484005db9825a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c463e0ae2f1d57a499484005db9825a7, type: 3}
 --- !u!1001 &5058925867749348244
@@ -1709,6 +1741,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1709740693}
     m_Modifications:
+    - target: {fileID: 5058925867747624984, guid: 08b322edcb6316145aef5b7fb6be9563, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 5058925867747624986, guid: 08b322edcb6316145aef5b7fb6be9563, type: 3}
       propertyPath: m_RootOrder
       value: 0

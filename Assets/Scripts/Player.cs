@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     private CharacterController _controller;
+    private Animator _anim;
     [SerializeField]
     private float _speed = 5.0f;
     [SerializeField]
@@ -17,6 +18,12 @@ public class Player : MonoBehaviour
     private Vector3 _direction;
     private Vector3 _velocity;
     private float _yVelocity;
+
+
+    private bool _onLedge;
+
+    private Ledge _activeLedge;
+
     private bool _canDoubleJump;
     
     private int _coin;
@@ -34,6 +41,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         _controller = GetComponent<CharacterController>();
+        _anim = GetComponent<Animator>();
+
         _UIManager.UpdateCoinText(_coin);
         _UIManager.UpdateLifeText(_life);
 
@@ -42,30 +51,60 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
- 
+        MovementCalculation();
+
+        if (_onLedge == true) 
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                _anim.SetTrigger("ClimbUp");
+            }
+        }
+    }
+
+    void MovementCalculation() 
+    {
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+
         if (_controller.isGrounded == true)
         {
-            _direction = new Vector3(horizontalInput, 0, 0);
+            _direction = new Vector3(0, 0, horizontalInput);
+            _anim.SetFloat("Speed", Mathf.Abs(horizontalInput));
             _velocity = _direction * _speed;
             _canWallJump = false;
 
-            if (Input.GetKeyDown(KeyCode.Space)) 
+            if (horizontalInput != 0)
             {
+                Vector3 facing = transform.localEulerAngles;
+                facing.y = _direction.z > 0 ? 0 : 180;
+                transform.localEulerAngles = facing;
+            }
+
+            if (_anim.GetBool("Jumping") == true)
+            {
+                _anim.SetBool("Jumping", false);
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                _anim.SetBool("Jumping", true);
                 _yVelocity = Jump();
                 _canDoubleJump = true;
             }
-            
+
         }
-        else 
+        else
         {
             if (Input.GetKeyDown(KeyCode.Space) && _canWallJump == false)
             {
-                if (_canDoubleJump) 
+
+
+                if (_canDoubleJump)
                 {
                     _yVelocity = Jump();
                     _canDoubleJump = false;
-                }                   
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.Space) && _canWallJump == true)
@@ -81,11 +120,10 @@ public class Player : MonoBehaviour
 
         _velocity.y = _yVelocity;
 
-        if (_controller.enabled == true) 
+        if (_controller.enabled == true)
         {
             _controller.Move(_velocity * Time.deltaTime);
         }
-        
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -113,6 +151,24 @@ public class Player : MonoBehaviour
     private float Jump() 
     {
         return Mathf.Sqrt(2 * _jumpHeight * Mathf.Abs(Physics.gravity.y));
+    }
+
+    public void GrabLedge(Vector3 handPos, Ledge currentLedge)
+    {
+        _controller.enabled = false;
+        _anim.SetBool("LedgeGrabbing", true);
+        _anim.SetFloat("Speed", 0f);
+        _anim.SetBool("Jumping", false);
+        _onLedge = true;
+        gameObject.transform.position = handPos;
+        _activeLedge = currentLedge;
+    }
+
+    public void CompleteClimb()
+    {
+        transform.position = _activeLedge.StandPos;
+        _anim.SetBool("LedgeGrabbing", false);
+        _controller.enabled = true;
     }
 
 
